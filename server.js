@@ -29,7 +29,6 @@ const sessionConfig = {
 };
 
 // * Middlewares
-
 if (NODE_ENV === 'development') {
   app.use(logger('dev'));
 }
