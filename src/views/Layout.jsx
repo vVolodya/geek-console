@@ -1,22 +1,30 @@
 const React = require('react');
 
+const Header = require('./components/Header');
+const Footer = require('./components/Footer');
+
 module.exports = function Layout({ children }) {
   return (
-    <html lang="en">
+    <html className="h-full" lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Geek Console</title>
         <link rel="icon" type="image/png" href="/css/favicon.ico" />
+        <link rel="stylesheet" href="/css/style.css" />
       </head>
-      <body>
+      <body className="min-h-full flex flex-col justify-between">
+
+        <Header />
 
         <main>
           {children}
         </main>
 
+        <Footer />
+
       </body>
     </html>
-  )
-}
+  );
+};

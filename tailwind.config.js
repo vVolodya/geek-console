@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const daysi = require('daisyui');
+
 module.exports = {
   content: ['./src/views/*/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -14,5 +17,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [daysi],
 };
