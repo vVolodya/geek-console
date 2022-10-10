@@ -5,3 +5,10 @@
 footer {
   margin-top: auto;
 }
+
+.desc-para {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

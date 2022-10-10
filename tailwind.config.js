@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
-const daysi = require('daisyui');
+const flowbite = require('flowbite/plugin');
 
 module.exports = {
-  content: ['./src/views/*/*.{js,jsx,ts,tsx}'],
+  content: ['./src/views/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
       sm: '480px',
@@ -17,5 +17,5 @@ module.exports = {
       },
     },
   },
-  plugins: [daysi],
+  plugins: [flowbite],
 };
