@@ -15,6 +15,8 @@ const errorHandlers = require('./src/middlewares/errorHandlers');
 // * Route files
 const indexRouter = require('./src/routes/indexRouters');
 const authRouter = require('./src/routes/authRouters');
+const booksRouter = require('./src/routes/booksRouters');
+const profileRouter = require('./src/routes/profileRouters');
 
 const app = express();
 
@@ -43,6 +45,8 @@ app.use(session(sessionConfig));
 // * Mount routers
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/books', booksRouter);
+app.use('/profile', profileRouter);
 
 app.use(errorHandlers.notFound);
 

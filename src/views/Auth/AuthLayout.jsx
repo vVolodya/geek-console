@@ -15,5 +15,5 @@ module.exports = function Layout({ children }) {
         {children}
       </body>
     </html>
-  )
-}
+  );
+};

@@ -45,11 +45,21 @@ exports.userLogin = async (req, res) => {
 
   const isMatch = await bcrypt.compare(password, user.password);
 
-  if(isMatch) {
-    req.session.userID = user.id;
-    req.session.userEmail = user.email;
+  if (isMatch) {
+    req.session.user = {
+      id: user.id,
+      nickname: user.nickname,
+      email: user.email,
+    };
     req.session.save(() => res.redirect('/'));
   } else {
     throw createError(401, 'Invalid credentials');
   }
-}
+};
+
+exports.userLogout = (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie('session');
+    res.redirect('/');
+  });
+};

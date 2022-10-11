@@ -20,6 +20,9 @@ module.exports = {
       year: {
         type: Sequelize.INTEGER,
       },
+      googleID: {
+        type: Sequelize.STRING,
+      },
       userID: {
         type: Sequelize.INTEGER,
         references: {
