@@ -10,5 +10,5 @@ router.route('/')
   .post(catchErrors(profileControllers.updateProfile));
 
 router.get('/books', profileControllers.renderBooks);
-
+router.get('/books/search', profileControllers.searchBooks);
 module.exports = router;

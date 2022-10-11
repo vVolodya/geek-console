@@ -1450,6 +1450,10 @@ input[type="range"]::-ms-fill-lower {
   padding: 1rem;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -1492,11 +1496,6 @@ input[type="range"]::-ms-fill-lower {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .px-3 {
@@ -1814,9 +1813,8 @@ footer {
   border-color: rgb(247 190 56 / 0.5);
 }
 
-.focus\:border-blue-600:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(28 100 242 / var(--tw-border-opacity));
+.focus\:border-\[\#F7BE38\]\/60:focus {
+  border-color: rgb(247 190 56 / 0.6);
 }
 
 .focus\:border-indigo-500:focus {
@@ -1920,9 +1918,9 @@ footer {
   padding-right: 0.5rem;
 }
 
-.peer:focus ~ .peer-focus\:text-blue-600 {
+.peer:focus ~ .peer-focus\:text-gray-900 {
   --tw-text-opacity: 1;
-  color: rgb(28 100 242 / var(--tw-text-opacity));
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .dark .dark\:border-gray-600 {

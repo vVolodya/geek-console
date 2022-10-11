@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { renderTemplate } = require('../middlewares/renderTemplate');
 
 const { User, Book } = require('../db/models');
@@ -32,4 +33,16 @@ exports.renderBooks = async (req, res) => {
   const { user } = req.session;
   const books = await Book.findAll({ raw: true, where: { userID: user.id } });
   renderTemplate(ProfileBooks, { user, books }, res);
+};
+
+exports.searchBooks = async (req, res) => {
+  const { searchQuery } = req.query;
+  const books = await Book.findAll({
+    raw: true,
+    where: {
+      title: { [Op.substring]: `${searchQuery}` },
+      userID: req.session.user.id,
+    },
+  });
+  res.json(books);
 };

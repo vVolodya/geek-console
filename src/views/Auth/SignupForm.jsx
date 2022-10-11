@@ -54,7 +54,7 @@ module.exports = function SignupForm({ error }) {
                   </div>
 
                   <div className="text-center p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
-                    Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character.
+                    Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character
                   </div>
 
                   <div>

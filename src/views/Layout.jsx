@@ -25,7 +25,7 @@ module.exports = function Layout({ children, user }) {
 
         <Header user={user} />
 
-        <main className="container mx-auto">
+        <main className="container mx-auto flex flex-col items-center p-10">
           {children}
         </main>
 
