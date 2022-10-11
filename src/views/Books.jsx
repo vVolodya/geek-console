@@ -28,9 +28,11 @@ module.exports = function Books({ user, books }) {
                     <a href={book.volumeInfo.infoLink} className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline" target="_blank" rel="noopener noreferrer">
                       Read More
                     </a>
-                    <div className="mt-2">
-                      <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add to Favorites</button>
-                    </div>
+                    { user ? (
+                      <div className="mt-2">
+                        <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add to Favorites</button>
+                      </div>
+                    ) : null }
                   </div>
                 </article>
               </div>

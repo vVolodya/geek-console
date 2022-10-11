@@ -17,7 +17,7 @@ module.exports = function Layout({ children, user }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet" />
 
-        <link rel="icon" type="image/png" href="/css/favicon.ico" />
+        <link rel="icon" type="image/png" href="https://i.ibb.co/31W7B1y/Png-Item-1032462.png" />
         <link rel="stylesheet" href="/css/style.css" />
       </head>
 

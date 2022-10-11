@@ -27,14 +27,14 @@ module.exports = function Profile({ user, userInfo }) {
             </div>
           </div>
           <div className="text-center py-4">
-            <button type="submit" className="w-44 h-11 rounded-full text-gray-50 bg-indigo-600 hover:bg-indigo-700">
+            <button type="submit" className="w-44 h-11 rounded-full text-gray-50 bg-zinc-900 hover:bg-zinc-700">
               Update Profile
             </button>
           </div>
           <div className="text-center">
             <a
               href="/logout"
-              className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2"
+              className="font-bold text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2"
             >
               Logout
             </a>
