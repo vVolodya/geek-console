@@ -23,6 +23,9 @@ module.exports = {
       googleID: {
         type: Sequelize.STRING,
       },
+      url: {
+        type: Sequelize.STRING,
+      },
       userID: {
         type: Sequelize.INTEGER,
         references: {

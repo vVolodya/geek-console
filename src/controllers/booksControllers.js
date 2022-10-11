@@ -17,13 +17,24 @@ exports.getBooks = async (req, res) => {
 
 exports.addBook = async (req, res) => {
   const { user } = req.session;
+
+  const author = req.body.volumeInfo.authors
+    ? req.body.volumeInfo.authors[0]
+    : null;
+
   await Book.create({
     title: req.body.volumeInfo.title,
     photo: req.body.volumeInfo.imageLinks?.thumbnail,
-    author: req.body.volumeInfo.authors[0],
+    author,
     year: Number(req.body.volumeInfo.publishedDate.split('-')[0]),
     googleID: req.body.id,
     userID: user.id,
+    url: req.body.volumeInfo.infoLink,
   });
+  res.status(200).end();
+};
+
+exports.removeBook = async (req, res) => {
+  await Book.destroy({ where: { id: req.params.id } });
   res.status(200).end();
 };

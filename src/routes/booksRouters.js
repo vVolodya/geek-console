@@ -9,4 +9,6 @@ router.route('/')
 router.route('/new')
   .post(booksControllers.addBook);
 
+router.delete('/:id', booksControllers.removeBook);
+
 module.exports = router;

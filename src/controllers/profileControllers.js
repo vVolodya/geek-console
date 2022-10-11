@@ -3,6 +3,7 @@ const { renderTemplate } = require('../middlewares/renderTemplate');
 const { User, Book } = require('../db/models');
 
 const Profile = require('../views/Profile');
+const ProfileBooks = require('../views/ProfileBooks');
 
 exports.renderProfile = async (req, res) => {
   const { user } = req.session;
@@ -29,6 +30,6 @@ exports.updateProfile = async (req, res) => {
 
 exports.renderBooks = async (req, res) => {
   const { user } = req.session;
-  const books = await Book.findAll({ userID: user.id });
-  // renderTemplate(Books, { user, books }, res);
+  const books = await Book.findAll({ raw: true, where: { userID: user.id } });
+  renderTemplate(ProfileBooks, { user, books }, res);
 };

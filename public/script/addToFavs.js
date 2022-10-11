@@ -25,6 +25,7 @@ const addToFavs = async (e) => {
     if (res.ok) {
       e.target.classList.add('cursor-not-allowed');
       e.target.setAttribute('disabled', 'disabled');
+      e.target.textContent = 'Added to favorites';
     }
   }
 };
