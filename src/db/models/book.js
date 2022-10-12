@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     googleID: DataTypes.STRING,
     userID: DataTypes.INTEGER,
     url: DataTypes.STRING,
+    comment: DataTypes.STRING,
+    desc: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Book',

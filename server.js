@@ -5,9 +5,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 require('dotenv').config({ path: 'variables.env' });
 
-const {
-  PORT, NODE_ENV, SESSION_SECRET, BOOKS_API,
-} = process.env;
+const { PORT, NODE_ENV, SESSION_SECRET } = process.env;
 
 const connectionCheck = require('./src/db/connectionCheck');
 const errorHandlers = require('./src/middlewares/errorHandlers');

@@ -5,8 +5,20 @@ const $spinnerContainer = document.querySelector('#spinner-container');
 const $emptyInputError = document.querySelector('#empty-input-error');
 const BOOKS_API = 'AIzaSyDDHnVxUHa0UhTkZ9RiZ11maiNkpXMAvvc';
 
-const showSpinner = () => $spinnerContainer.classList.remove('invisible');
-const showError = () => $emptyInputError.classList.remove('invisible');
+const showSpinner = () => {
+  $spinnerContainer.classList.remove('hidden');
+  $spinnerContainer.classList.add('block');
+};
+
+const showError = () => {
+  $emptyInputError.classList.remove('hidden');
+  $emptyInputError.classList.add('block');
+};
+
+const hideError = () => {
+  $emptyInputError.classList.remove('block');
+  $emptyInputError.classList.add('hidden');
+};
 
 const getBooks = async (e) => {
   e.preventDefault();
@@ -17,8 +29,8 @@ const getBooks = async (e) => {
     return showError();
   }
 
-  if (!$emptyInputError.classList.contains('invisible')) {
-    $emptyInputError.remove();
+  if ($emptyInputError.classList.contains('block')) {
+    hideError();
   }
 
   showSpinner();

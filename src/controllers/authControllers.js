@@ -39,7 +39,7 @@ exports.userLogin = async (req, res) => {
     nickname: req.user.nickname,
     email: req.user.email,
   };
-  req.session.save(() => res.redirect('/'));
+  req.session.save(() => res.redirect('/profile/books'));
 };
 
 exports.userLogout = (req, res) => {

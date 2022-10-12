@@ -21,7 +21,7 @@ module.exports = function Layout({ children, user }) {
         <link rel="stylesheet" href="/css/style.css" />
       </head>
 
-      <body className="min-h-full flex flex-col justify-between">
+      <body className="min-h-full flex flex-col justify-between bg-[#1c1c1c]">
 
         <Header user={user} />
 
