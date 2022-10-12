@@ -8,7 +8,8 @@ exports.catchErrors = (fn) => function (req, res, next) {
 };
 
 exports.notFound = (req, res) => {
-  renderTemplate(NotFound, null, res);
+  const { user } = req.session;
+  renderTemplate(NotFound, { user }, res);
 };
 
 exports.developmentErrors = async (err, req, res, next) => {

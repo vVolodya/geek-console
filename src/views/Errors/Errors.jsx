@@ -5,7 +5,7 @@ module.exports = function Error({ errorDetails, user }) {
   return (
     <Layout user={user}>
       <div className="w-50 mx-auto mt-5 d-flex flex-column align-items-center">
-        <h1>{errorDetails.message}</h1>
+        <h1>Something went wrong</h1>
         <h2>{errorDetails.status}</h2>
         { errorDetails.stackHighlited ? (
           <pre

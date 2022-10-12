@@ -4,17 +4,40 @@ const Layout = require('../Layout');
 module.exports = function BookDetails({ user, book }) {
   return (
     <Layout user={user}>
-      <article className="p-4 mx-auto max-w-xl bg-white rounded-lg shadow-md border border-gray-200 dark:border-gray-800 dark:bg-gray-800">
-        <img className="mb-5 rounded-lg" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
-        <h2 className="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
-          {book.title}
-        </h2>
-        <p className="mb-3 font-light text-gray-500 dark:text-gray-400">{book.desc ? book.desc : 'No description'}</p>
-        <a href="#" className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline">
-          Edit
-          {' '}
-          <svg className="mt-px ml-1 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-        </a>
+      <h1 className="text-center mb-16 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">Book Details</h1>
+      <article className="flex justify-start items-center space-x-10 p-8 mx-auto bg-[#232323] border-[#2e2e2e] rounded-lg shadow-md border dark:border-gray-800 dark:bg-gray-800">
+        <div className="w-1/4">
+          <img className="h-full w-full rounded-lg" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
+        </div>
+        <div className="w-3/4">
+          <h2 className="mb-2 text-center text-xl font-bold tracking-tight lg:text-2xl text-white">
+            {book.title}
+          </h2>
+          <div>
+            <h4 className="text-yellow-400 font-bold">Author</h4>
+            <p className="mb-3 font-light text-gray-500 dark:text-gray-400">{book.author ? book.author : 'Author unknown'}</p>
+          </div>
+          <div>
+            <h4 className="text-yellow-400 font-bold">Year</h4>
+            <p className="mb-3 font-light text-gray-500 dark:text-gray-400">{book.year ? book.year : 'Year unknown'}</p>
+          </div>
+          <div>
+            <h4 className="text-yellow-400 font-bold">Description</h4>
+            <p className="short-desc mb-3 font-light text-gray-500 dark:text-gray-400">{book.desc ? book.desc : 'No description'}</p>
+          </div>
+          <div>
+            <h4 className="text-yellow-400 font-bold">Your comments</h4>
+            <p className="mb-3 font-light text-gray-500 dark:text-gray-400">{book.comment ? book.comment : 'No comments yet. Add one!'}</p>
+          </div>
+          <div className="flex space-x-4">
+            <a href={book.url} className="font-bold border focus:ring-2 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center border-yellow-300 text-yellow-300 hover:bg-yellow-300/20 focus:ring-yellow-900" target="_blank" rel="noopener noreferrer">External link</a>
+            <a href={`/books/book-form/${book.id}`} className="font-bold text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+              Edit
+              {' '}
+              <svg className="mt-px ml-1 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+            </a>
+          </div>
+        </div>
       </article>
     </Layout>
   );

@@ -24,7 +24,11 @@ module.exports = function NewBookForm({ user }) {
             </div>
             <div>
               <label htmlFor="url" className="block mb-2 text-sm font-medium text-yellow-400">Book cover</label>
-              <input name="url" type="url" id="url" pattern="https://.*" className="border text-sm rounded-lg block w-full p-2.5 bg-white border-gray-600 placeholder-gray-400 text-gray-900 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 shadow-sm-light" placeholder="Book cover http link" />
+              <input name="url" type="url" id="url" pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?" className="border text-sm rounded-lg block w-full p-2.5 bg-white border-gray-600 placeholder-gray-400 text-gray-900 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 shadow-sm-light" placeholder="Book cover http or https link" />
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="desc" className="block mb-2 text-sm font-medium text-yellow-400">Book description</label>
+              <textarea name="desc" id="desc" rows="6" className="block p-2.5 w-full text-sm rounded-lg shadow-sm border bg-white border-gray-600 placeholder-gray-400 text-gray-900 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90" placeholder="Book description" />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="comments" className="block mb-2 text-sm font-medium text-yellow-400">Your comments</label>

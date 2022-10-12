@@ -35,7 +35,7 @@ const getBooks = async (e) => {
 
   showSpinner();
 
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${BOOKS_API}&maxResults=5`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${BOOKS_API}&maxResults=20`;
 
   const response = await fetch(url);
   const data = await response.json();

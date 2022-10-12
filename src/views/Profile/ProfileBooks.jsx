@@ -15,11 +15,11 @@ module.exports = function Books({ user, books }) {
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
-          <input name="searchQuery" type="search" id="default-search" className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search in your collection" />
+          <input name="searchQuery" type="search" id="default-search" className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search in your collection by title" />
           <button type="submit" id="search-btn" className="text-gray-900 absolute right-2.5 bottom-2.5 bg-[#F7BE38]/90 hover:bg-[#F7BE38]/100 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-4 py-2">Search</button>
         </div>
         <div id="nothing-found-alert" className="p-4 my-4 text-sm rounded-lg bg-[#F7BE38] text-gray-900 text-center font-bold hidden" role="alert">
-          Nothing found. Try again!
+          Nothing found. Try changing your search parameters!
         </div>
         <div id="empty-input-error" className="p-4 my-4 text-sm rounded-lg bg-red-200 text-red-800 text-center font-bold hidden" role="alert">
           Input field cannot be empty! Please, try again.
@@ -32,18 +32,17 @@ module.exports = function Books({ user, books }) {
           <span className="sr-only">Loading...</span>
         </div>
       </form>
-
       <div id="books-container" className="container mx-auto grid grid-cols-1 justify-center items-center gap-5 lg:grid-cols-4 md:grid-cols-2 mt-10">
         { books.length ? (
           books.map((book) => (
-            <div key={book.id} className="flex flex-col justify-center items-center w-full rounded-lg border shadow-md bg-[#232323] border-[#2e2e2e] p-4">
-              <a href={book.url} className="text-center" target="_blank" rel="noopener noreferrer">
-                <img className="w-40 h-40 max-w-full align-middle rounded-full" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
+            <div key={book.id} className="flex flex-col justify-center items-center w-full rounded-lg border shadow-md bg-[#232323] border-[#2e2e2e] p-4 transform transition duration-300 hover:scale-105 hover:shadow-md hover:shadow-yellow-400">
+              <a href={`/books/${book.id}`} className="text-center">
+                <img className="w-40 h-56 max-w-full align-middle rounded-xl" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
               </a>
               <div className="p-5 flex flex-col justify-center items-center">
                 <p className="short-author text-sm mb-3 font-normal text-gray-400">{book.author ? book.author : 'Unknown'}</p>
                 <div className="h-12 mb-3">
-                  <a href={book.url} target="_blank" rel="noopener noreferrer">
+                  <a href={`/books/${book.id}`}>
                     <h5 className="text-center short-title text-lg font-bold tracking-tight text-white">{book.title}</h5>
                   </a>
                 </div>
@@ -58,9 +57,7 @@ module.exports = function Books({ user, books }) {
             </div>
           ))
         ) : null}
-
       </div>
-
     </Layout>
   );
 };

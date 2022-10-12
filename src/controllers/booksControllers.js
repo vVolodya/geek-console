@@ -5,6 +5,7 @@ const { Book } = require('../db/models');
 const Books = require('../views/Books/Books');
 const NewBookForm = require('../views/Books/NewBookForm');
 const BookDetails = require('../views/Books/BookDetails');
+const EditBookForm = require('../views/Books/EditBookForm');
 
 exports.renderBooksPage = (req, res) => {
   const { books, user } = req.session;
@@ -24,6 +25,10 @@ exports.addBook = async (req, res) => {
     ? req.body.volumeInfo.authors[0]
     : null;
 
+  const cleanDesc = req.body.volumeInfo.description
+    ? req.body.volumeInfo.description.replaceAll(/<[^>]*>/g, '').trim()
+    : null;
+
   await Book.create({
     title: req.body.volumeInfo.title,
     photo: req.body.volumeInfo.imageLinks?.thumbnail,
@@ -32,7 +37,7 @@ exports.addBook = async (req, res) => {
     googleID: req.body.id,
     userID: user.id,
     url: req.body.volumeInfo.infoLink,
-    desc: req.body.volumeInfo.description || null,
+    desc: cleanDesc,
   });
   res.status(200).end();
 };
@@ -49,7 +54,7 @@ exports.renderNewBookForm = (req, res) => {
 
 exports.addYourOwnBook = async (req, res) => {
   const {
-    title, author, year, url, comment,
+    title, author, year, url, comment, desc,
   } = req.body;
 
   const { user } = req.session;
@@ -59,6 +64,7 @@ exports.addYourOwnBook = async (req, res) => {
     photo: url,
     author,
     year,
+    desc,
     comment,
     userID: user.id,
   });
@@ -67,11 +73,35 @@ exports.addYourOwnBook = async (req, res) => {
 };
 
 exports.renderBookPage = async (req, res) => {
-  const book = await Book.findByPk(req.params.id);
+  const book = req.bookObj;
   const { user } = req.session;
   renderTemplate(BookDetails, { user, book }, res);
 };
 
-exports.updateBook = async (req, res) => {
+exports.renderEditBookForm = async (req, res) => {
+  const { user } = req.session;
+  const book = req.bookObj;
+  renderTemplate(EditBookForm, { user, book }, res);
+};
 
+exports.updateBook = async (req, res) => {
+  const {
+    title, author, year, photo, url, comment, desc,
+  } = req.body;
+
+  await Book.update({
+    title,
+    author,
+    photo,
+    url,
+    year,
+    desc,
+    comment,
+  }, {
+    where: { id: req.params.id },
+    returning: true,
+    plain: true,
+  });
+
+  res.redirect(`/books/${req.params.id}`);
 };

@@ -1,4 +1,5 @@
 const { Op } = require('sequelize');
+const bcrypt = require('bcrypt');
 const { renderTemplate } = require('../middlewares/renderTemplate');
 
 const { User, Book } = require('../db/models');
@@ -15,23 +16,28 @@ exports.renderProfile = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-  const { user } = req.session;
-  const { userName, email } = req.body;
+  const { userName, email, password } = req.body;
+
+  const hash = await bcrypt.hash(password, 10);
+
+  const { user, userInfo } = req;
 
   await User.update({
     nickname: userName,
     email,
+    password: hash,
   }, {
-    where: { id: user.id },
+    where: { id: req.session.user.id },
     returning: true,
     plain: true,
   });
-  res.redirect('/profile');
+  const success = 'Profile updated successfully';
+  renderTemplate(Profile, { user, userInfo, success }, res);
 };
 
 exports.renderBooks = async (req, res) => {
   const { user } = req.session;
-  const books = await Book.findAll({ raw: true, where: { userID: user.id }, order: [['id', 'DESC']] });
+  const books = await Book.findAll({ raw: true, where: { userID: user.id }, order: [['createdAt', 'DESC']] });
   renderTemplate(ProfileBooks, { user, books }, res);
 };
 

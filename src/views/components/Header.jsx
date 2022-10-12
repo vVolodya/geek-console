@@ -1,12 +1,5 @@
 const React = require('react');
 
-const navigation = [
-  { name: 'Features', href: '#' },
-  { name: 'Pricing', href: '#' },
-  { name: 'Support', href: '#' },
-  { name: 'About', href: '#' },
-];
-
 module.exports = function Header({ user }) {
   return (
     <header className="bg-zinc-900">
@@ -14,7 +7,7 @@ module.exports = function Header({ user }) {
         <div className="flex w-full items-center justify-center lg:justify-between border-b border-white py-6 lg:border-none">
           <div className="flex items-center">
             <a href="/">
-              <img className="h-14 w-auto" src="https://i.ibb.co/3pXQzjv/1665489877-trans-Png17.png" alt="" />
+              <img className="h-12 w-auto" src="/images/geekConsole3.png" alt="" />
             </a>
           </div>
           <div className="ml-10 space-x-4 hidden lg:block">
