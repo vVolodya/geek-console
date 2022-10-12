@@ -11,9 +11,9 @@ module.exports = function Layout({ children }) {
         <link rel="icon" type="image/png" href="/css/favicon.ico" />
         <link rel="stylesheet" href="/css/style.css" />
       </head>
-      <body className="h-full">
+      <body className="h-full bg-[#1c1c1c]">
         {children}
       </body>
     </html>
-  )
-}
+  );
+};

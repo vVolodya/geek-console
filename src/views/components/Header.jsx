@@ -1,51 +1,105 @@
 const React = require('react');
 
-const navigation = [
-  { name: 'Features', href: '#' },
-  { name: 'Pricing', href: '#' },
-  { name: 'Support', href: '#' },
-  { name: 'About', href: '#' },
-];
-
-module.exports = function Header() {
+module.exports = function Header({ user }) {
   return (
-    <header className="bg-indigo-600">
+    <header className="bg-zinc-900">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
+        <div className="flex w-full items-center justify-center lg:justify-between border-b border-white py-6 lg:border-none">
           <div className="flex items-center">
             <a href="/">
-              <span className="sr-only">Your Company</span>
-              <img className="h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" />
+              <img className="h-12 w-auto" src="/images/geekConsole3.png" alt="" />
             </a>
-            <div className="ml-10 hidden space-x-8 lg:block">
-              {navigation.map((link) => (
-                <a key={link.name} href={link.href} className="text-base font-medium text-white hover:text-indigo-50">
-                  {link.name}
-                </a>
-              ))}
-            </div>
           </div>
-          <div className="ml-10 space-x-4">
-            <a
-              href="/"
-              className="inline-block rounded-md border border-transparent bg-indigo-500 py-2 px-4 text-base font-medium text-white hover:bg-opacity-75"
-            >
-              Sign in
-            </a>
-            <a
-              href="/"
-              className="inline-block rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-indigo-600 hover:bg-indigo-50"
-            >
-              Sign up
-            </a>
+          <div className="ml-10 space-x-4 hidden lg:block">
+            { user ? (
+              <>
+                <a
+                  href="/books/new-form"
+                  className="text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                >
+                  Add new book
+                </a>
+                <a
+                  href="/profile/books"
+                  className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+                >
+                  Collection
+                </a>
+                <a
+                  href="/profile"
+                  className="font-bold text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                >
+                  Profile
+                </a>
+                <a
+                  href="/logout"
+                  className="font-bold border focus:ring-2 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center border-yellow-300 text-yellow-300 hover:bg-yellow-300/20 focus:ring-yellow-900"
+                >
+                  Logout
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href="/login"
+                  className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+                >
+                  Sign in
+                </a>
+                <a
+                  href="/signup"
+                  className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                >
+                  Sign up
+                </a>
+              </>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap justify-center space-x-6 py-4 lg:hidden">
-          {navigation.map((link) => (
-            <a key={link.name} href={link.href} className="text-base font-medium text-white hover:text-indigo-50">
-              {link.name}
-            </a>
-          ))}
+          { user ? (
+            <>
+              <a
+                href="/books/new-form"
+                className="text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+              >
+                Add new book
+              </a>
+              <a
+                href="/profile/books"
+                className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+              >
+                Collection
+              </a>
+              <a
+                href="/profile"
+                className="font-bold text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+              >
+                Profile
+              </a>
+              <a
+                href="/logout"
+                className="font-bold border focus:ring-2 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center border-yellow-300 text-yellow-300 hover:bg-yellow-300/20 focus:ring-yellow-900"
+              >
+                Logout
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                href="/login"
+                className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+              >
+                Sign in
+              </a>
+              <a
+                href="/signup"
+                className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+              >
+                Sign up
+              </a>
+            </>
+          )}
         </div>
       </nav>
     </header>

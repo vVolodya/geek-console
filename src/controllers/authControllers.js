@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const createError = require('http-errors');
 const { renderTemplate } = require('../middlewares/renderTemplate');
 
 const LoginForm = require('../views/Auth/LoginForm');
@@ -35,21 +34,17 @@ exports.userSignup = async (req, res) => {
 // ? @route POST /login
 // ? @access Public
 exports.userLogin = async (req, res) => {
-  const { email, password } = req.body;
+  req.session.user = {
+    id: req.user.id,
+    nickname: req.user.nickname,
+    email: req.user.email,
+  };
+  req.session.save(() => res.redirect('/profile/books'));
+};
 
-  const user = await User.findOne({ where: { email } });
-
-  if (!user) {
-    throw createError(401, 'Invalid credentials');
-  }
-
-  const isMatch = await bcrypt.compare(password, user.password);
-
-  if(isMatch) {
-    req.session.userID = user.id;
-    req.session.userEmail = user.email;
-    req.session.save(() => res.redirect('/'));
-  } else {
-    throw createError(401, 'Invalid credentials');
-  }
-}
+exports.userLogout = (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie('session');
+    res.redirect('/');
+  });
+};

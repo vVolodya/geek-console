@@ -3,5 +3,6 @@ const { renderTemplate } = require('../middlewares/renderTemplate');
 const Home = require('../views/Home');
 
 exports.renderHomePage = (req, res) => {
-  renderTemplate(Home, null, res);
+  const { user } = req.session;
+  renderTemplate(Home, { user }, res);
 };

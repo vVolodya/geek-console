@@ -17,8 +17,20 @@ module.exports = {
       author: {
         type: Sequelize.STRING,
       },
+      desc: {
+        type: Sequelize.STRING,
+      },
       year: {
         type: Sequelize.INTEGER,
+      },
+      googleID: {
+        type: Sequelize.STRING,
+      },
+      url: {
+        type: Sequelize.STRING,
+      },
+      comment: {
+        type: Sequelize.STRING,
       },
       userID: {
         type: Sequelize.INTEGER,
