@@ -8,9 +8,24 @@ module.exports = function BookDetails({ user, book }) {
       <article className="flex justify-start items-center space-x-10 p-8 mx-auto bg-[#232323] border-[#2e2e2e] rounded-lg shadow-md border dark:border-gray-800 dark:bg-gray-800">
         <div className="w-1/4">
           <img className="h-full w-full rounded-lg" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
+          { book.status === 'reading' ? (
+            <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg bg-[#F7BE38] text-grey-900 text-center" role="alert">
+              {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+            </div>
+          ) : null }
+          { book.status === 'want to read' ? (
+            <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg bg-[#e11d48] text-white text-center" role="alert">
+              {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+            </div>
+          ) : null }
+          { book.status === 'have read' ? (
+            <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg border bg-black border-yellow-300 text-yellow-300 text-center" role="alert">
+              {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+            </div>
+          ) : null }
         </div>
         <div className="w-3/4">
-          <h2 className="mb-2 text-center text-xl font-bold tracking-tight lg:text-2xl text-white">
+          <h2 className="mb-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-white">
             {book.title}
           </h2>
           <div>

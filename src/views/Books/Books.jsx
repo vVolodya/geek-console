@@ -2,15 +2,18 @@ const React = require('react');
 
 const Layout = require('../Layout');
 
-module.exports = function Books({ user, books }) {
+module.exports = function Books({ user, books, userBooks }) {
   return (
     <Layout user={user}>
       <script defer src="/script/addToFavs.js" />
 
+      <h1 className="text-center mb-16 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">Search Results</h1>
+
+      <div id="duplicate-book-error" className="p-4 my-4 text-sm font-bold rounded-lg bg-red-200 text-red-800 text-center hidden" role="alert">
+        You already have this book in your collection
+      </div>
+
       <div id="books-container" className="container flex md:flex-col justify-center items-start pl-40 mt-6 mb-6">
-        <div id="duplicate-book-error" className="mx-auto p-4 my-4 text-sm rounded-lg bg-red-200 text-red-800 text-center font-bold hidden" role="alert">
-          You already have this book in your collection!
-        </div>
         { books.length
           ? books.map((book) => (
             <aside className="py-4 lg:py-8 dark:bg-gray-900">
@@ -32,9 +35,9 @@ module.exports = function Books({ user, books }) {
                       <a href={book.volumeInfo.infoLink} className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2" target="_blank" rel="noopener noreferrer">
                         Read More
                       </a>
-                      { user ? (
-                        <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">Add to Collection</button>
-                      ) : null }
+                      { user
+                        ? <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">Add to Collection</button>
+                        : null }
                     </div>
                   </div>
                 </article>

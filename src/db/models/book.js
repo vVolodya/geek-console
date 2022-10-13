@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
     comment: DataTypes.STRING,
     desc: DataTypes.STRING,
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'want to read',
+    },
   }, {
     sequelize,
     modelName: 'Book',

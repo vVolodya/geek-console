@@ -12,6 +12,10 @@ const hideError = () => {
   $duplicateBookError.classList.add('hidden');
 };
 
+const scrollTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 const addToFavs = async (e) => {
   if (e.target.tagName === 'BUTTON' && e.target.classList.contains('add-to-favs-btn')) {
     if ($duplicateBookError.classList.contains('block')) {
@@ -46,6 +50,8 @@ const addToFavs = async (e) => {
       e.target.setAttribute('disabled', 'disabled');
       e.target.textContent = 'Already in collection';
       showError();
+      scrollTop();
+      setTimeout(hideError, 3000);
     }
   }
 };

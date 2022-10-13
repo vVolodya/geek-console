@@ -7,9 +7,15 @@ const NewBookForm = require('../views/Books/NewBookForm');
 const BookDetails = require('../views/Books/BookDetails');
 const EditBookForm = require('../views/Books/EditBookForm');
 
-exports.renderBooksPage = (req, res) => {
+exports.renderBooksPage = async (req, res) => {
   const { books, user } = req.session;
-  renderTemplate(Books, { books, user }, res);
+
+  if (user) {
+    const userBooks = await Book.findAll({ raw: true, where: { userID: user.id } });
+    renderTemplate(Books, { books, user, userBooks }, res);
+  } else {
+    renderTemplate(Books, { books, user }, res);
+  }
 };
 
 exports.getBooks = async (req, res) => {
@@ -54,14 +60,16 @@ exports.renderNewBookForm = (req, res) => {
 
 exports.addYourOwnBook = async (req, res) => {
   const {
-    title, author, year, url, comment, desc,
+    title, author, year, url, photo, comment, desc, status,
   } = req.body;
 
   const { user } = req.session;
 
   await Book.create({
     title,
-    photo: url,
+    photo,
+    url,
+    status,
     author,
     year,
     desc,
@@ -86,7 +94,7 @@ exports.renderEditBookForm = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
   const {
-    title, author, year, photo, url, comment, desc,
+    title, author, year, photo, url, comment, desc, status,
   } = req.body;
 
   await Book.update({
@@ -96,6 +104,7 @@ exports.updateBook = async (req, res) => {
     url,
     year,
     desc,
+    status,
     comment,
   }, {
     where: { id: req.params.id },
