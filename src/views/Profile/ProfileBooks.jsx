@@ -70,7 +70,21 @@ module.exports = function Books({ user, books }) {
               </div>
             </div>
           ))
-        ) : null}
+        )
+          : (
+            <div className="col-span-4 text-center">
+              <p className="mx-auto mt-5 text-3xl text-gray-400">
+                You do not have any books in your collection yet.
+              </p>
+              <p className="mx-auto mt-5 text-3xl text-gray-400">But you can add your own book by clicking the red button above or find one at the home page.</p>
+              <a
+                href="/"
+                className="mt-6 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+              >
+                Home page
+              </a>
+            </div>
+          )}
       </div>
     </Layout>
   );

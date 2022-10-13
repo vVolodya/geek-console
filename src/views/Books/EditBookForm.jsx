@@ -16,7 +16,7 @@ module.exports = function NewBookForm({ user, book }) {
             </div>
             <div>
               <label htmlFor="author" className="block mb-2 text-sm font-medium text-yellow-400">Author</label>
-              <input name="author" type="text" value={book.author} id="author" className="border text-sm rounded-lg block w-full p-2.5 bg-white border-gray-600 placeholder-gray-400 text-gray-900 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 shadow-sm-light" placeholder="William Shakespear" required />
+              <input name="author" type="text" value={book.author} id="author" className="border text-sm rounded-lg block w-full p-2.5 bg-white border-gray-600 placeholder-gray-400 text-gray-900 focus:ring-[#F7BE38]/90 focus:border-[#F7BE38]/90 shadow-sm-light" placeholder="William Shakespear" />
             </div>
             <div>
               <label htmlFor="year" className="block mb-2 text-sm font-medium text-yellow-400">Publish date</label>

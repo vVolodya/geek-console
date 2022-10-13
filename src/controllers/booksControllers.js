@@ -9,13 +9,7 @@ const EditBookForm = require('../views/Books/EditBookForm');
 
 exports.renderBooksPage = async (req, res) => {
   const { books, user } = req.session;
-
-  if (user) {
-    const userBooks = await Book.findAll({ raw: true, where: { userID: user.id } });
-    renderTemplate(Books, { books, user, userBooks }, res);
-  } else {
-    renderTemplate(Books, { books, user }, res);
-  }
+  renderTemplate(Books, { books, user }, res);
 };
 
 exports.getBooks = async (req, res) => {

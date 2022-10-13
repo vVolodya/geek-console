@@ -6,21 +6,21 @@ module.exports = function SignupForm({ error }) {
     <AuthLayout>
       <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
       <div className="flex min-h-full">
-        <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 border-r-4 border-[#F7BE38]">
+        <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 xl:flex-none lg:px-20 xl:px-24 xl:border-r-4 xl:border-[#F7BE38]">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <img
-                className="h-12 w-auto mx-auto"
-                src="/images/brain.png"
-                alt="Your Company"
-              />
+              <a href="/">
+                <img
+                  className="h-12 w-auto mx-auto"
+                  src="/images/brain.png"
+                  alt="Your Company"
+                />
+              </a>
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-white text-center">Become a member</h2>
             </div>
-
             <div className="mt-8">
               <div className="mt-6">
                 <form action="#" method="POST" className="space-y-6">
-
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-yellow-400">
                       Email
@@ -36,7 +36,6 @@ module.exports = function SignupForm({ error }) {
                       />
                     </div>
                   </div>
-
                   <div className="space-y-1">
                     <label htmlFor="password" className="block text-sm font-medium text-yellow-400">
                       Password
@@ -52,11 +51,9 @@ module.exports = function SignupForm({ error }) {
                       />
                     </div>
                   </div>
-
                   <div className="text-center font-bold p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
                     Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character
                   </div>
-
                   <div>
                     <button
                       type="submit"
@@ -64,32 +61,24 @@ module.exports = function SignupForm({ error }) {
                     >
                       Register
                     </button>
-
                     <div className="text-sm mt-4 text-center">
                       <a href="/login" className="font-medium text-[#4250A8] hover:text-[#4250A8]/90">
                         Already have an account?
                       </a>
                     </div>
-
                     {error ? (
                       <div className="p-4 my-4 text-sm font-bold text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 text-center" role="alert">
                         {error}
                       </div>
                     ) : null}
-
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-        <div className="relative hidden w-0 flex-1 lg:block">
-          <lottie-player className="lottie" src="https://assets6.lottiefiles.com/packages/lf20_DMgKk1.json" style={{ width: 900, height: 900, frameBorder: 0 }} background="transparent" speed="1" loop autoplay />
-          {/* <img
-            className="absolute inset-0 h-full w-full object-cover"
-            src="/images/loginRightSide.avif"
-            alt="Login Building"
-          /> */}
+        <div className="relative hidden w-0 pt-32 pl-80 flex-1 xl:block items-center">
+          <lottie-player className="lottie" src="https://assets3.lottiefiles.com/packages/lf20_wt880ps8.json" style={{ width: 700, height: 700, frameBorder: 0 }} background="transparent" speed="1" loop autoplay />
         </div>
       </div>
     </AuthLayout>

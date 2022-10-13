@@ -1,4 +1,3 @@
-const createError = require('http-errors');
 const { renderTemplate } = require('./renderTemplate');
 const Error = require('../views/Errors/Errors');
 const NotFound = require('../views/Errors/404');
@@ -8,11 +7,12 @@ exports.catchErrors = (fn) => function (req, res, next) {
 };
 
 exports.notFound = (req, res) => {
-  const { user } = req.session;
+  const user = req.session.user ? req.session.user : null;
   renderTemplate(NotFound, { user }, res);
 };
 
 exports.developmentErrors = async (err, req, res, next) => {
+  const user = req.session.user ? req.session.user : null;
   const error = err;
 
   const errorDetails = {
@@ -24,12 +24,13 @@ exports.developmentErrors = async (err, req, res, next) => {
   res.status(error.status || 500);
 
   res.format({
-    'text/html': () => renderTemplate(Error, { errorDetails }, res),
+    'text/html': () => renderTemplate(Error, { user, errorDetails }, res),
     'application/json': () => res.json(errorDetails),
   });
 };
 
 exports.productionErrors = async (err, req, res, next) => {
+  const user = req.session.user ? req.session.user : null;
   const error = err;
 
   res.status(error.status || 500);
@@ -39,5 +40,5 @@ exports.productionErrors = async (err, req, res, next) => {
     status: error.status,
   };
 
-  renderTemplate(Error, { errorDetails }, res);
+  renderTemplate(Error, { user, errorDetails }, res);
 };
