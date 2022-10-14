@@ -13,7 +13,20 @@ module.exports = function Footer() {
             </div>
             <p className="text-white text-sm">© 2022 GeekConsole™. All Rights Reserved</p>
           </div>
-          <form name="newsletter" className="flex flex-col w-full max-w-sm lg:ml-auto">
+
+          <ul className="flex flex-wrap items-center mb-4 text-xl lg:mb-0 text-gray-400">
+            <li>
+              <a href="/" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6 ">Home</a>
+            </li>
+            <li>
+              <a href="https://roadmap.geekconsole.app" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6 ">Roadmap</a>
+            </li>
+            <li>
+              <a href="https://github.com/vVolodya" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6">Github</a>
+            </li>
+          </ul>
+
+          <form name="newsletter" className="flex flex-col w-full max-w-sm">
             <div className="flex">
               <div className="relative w-full">
                 <label htmlFor="email" className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
