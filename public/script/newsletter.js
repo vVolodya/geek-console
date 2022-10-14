@@ -20,17 +20,17 @@ const getUsersEmail = async (e) => {
 
   const emailAddress = e.target.email.value;
 
+  const API = 'uSs5QVtmgdZlc68IQ9DzvQ';
+
   const options = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: JSON.stringify({ emailAddress }),
+    body: JSON.stringify({ api_key: API, email: emailAddress }),
   };
 
-  const response = await fetch('https://app.convertkit.com/forms/3697247/subscriptions', options);
-
-  console.log(response);
+  const response = await fetch('https://api.convertkit.com/v3/forms/3697247/subscribe', options);
 
   if (response.ok) {
     hideEl($emailSpinnerButon);
