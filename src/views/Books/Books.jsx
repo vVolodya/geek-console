@@ -7,13 +7,12 @@ module.exports = function Books({ user, books }) {
     <Layout user={user}>
       <script defer src="/script/addToFavs.js" />
 
-      <div id="books-container" className="container flex md:flex-col justify-center items-start pl-40 mt-6 mb-6">
-        <div id="duplicate-book-error" className="mx-auto p-4 my-4 text-sm rounded-lg bg-red-200 text-red-800 text-center font-bold hidden" role="alert">
-          You already have this book in your collection!
-        </div>
-        { books.length
+      <h1 className="text-center mb-16 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">Search Results</h1>
+
+      <div id="books-container" className="container flex gap-6 md:flex-col justify-center items-center mt-6 mb-6">
+        { books
           ? books.map((book) => (
-            <aside className="py-4 lg:py-8 dark:bg-gray-900">
+            <aside className="w-full py-4 lg:py-8 bg-[#232323] border border-[#2e2e2e] transform transition duration-300 hover:scale-105 hover:shadow-md hover:shadow-yellow-400">
               <div className="px-4 mx-auto max-w-screen-xl">
                 <article className="flex mb-8">
                   <a href={book.volumeInfo.infoLink} className="shrink-0" target="_blank" rel="noopener noreferrer">
@@ -28,19 +27,26 @@ module.exports = function Books({ user, books }) {
                     <p className="short mb-2 font-light text-white">
                       {book.volumeInfo.description === undefined ? 'No description available' : book.volumeInfo.description}
                     </p>
-                    <div className="mt-4 space-x-2">
-                      <a href={book.volumeInfo.infoLink} className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2" target="_blank" rel="noopener noreferrer">
-                        Read More
-                      </a>
-                      { user ? (
-                        <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">Add to Collection</button>
-                      ) : null }
+                    <div className="mt-4 flex flex-col">
+                      <div className="flex">
+                        <a href={book.volumeInfo.infoLink} className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2" target="_blank" rel="noopener noreferrer">
+                          Read More
+                        </a>
+                        { user
+                          ? <button data-gid={book.id} type="submit" className="add-to-favs-btn text-white bg-[#e11d48] hover:bg-[#e11d48]/90 focus:ring-2 focus:outline-none focus:ring-[#e11d48]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">Add to Collection</button>
+                          : null }
+                      </div>
                     </div>
                   </div>
                 </article>
               </div>
             </aside>
-          )) : null}
+          ))
+          : (
+            <p className="mx-auto mt-5 max-w-xl text-3xl text-gray-400">
+              Nothing found...
+            </p>
+          )}
       </div>
     </Layout>
   );

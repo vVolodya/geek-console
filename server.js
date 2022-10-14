@@ -15,6 +15,7 @@ const indexRouter = require('./src/routes/indexRouters');
 const authRouter = require('./src/routes/authRouters');
 const booksRouter = require('./src/routes/booksRouters');
 const profileRouter = require('./src/routes/profileRouters');
+const newsletterRouter = require('./src/routes/newsletterRouter');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/books', booksRouter);
 app.use('/profile', profileRouter);
+app.use('/newsletter', newsletterRouter);
 
 app.use(errorHandlers.notFound);
 

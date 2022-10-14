@@ -39,14 +39,28 @@ module.exports = function Books({ user, books }) {
               <a href={`/books/${book.id}`} className="text-center">
                 <img className="w-40 h-56 max-w-full align-middle rounded-xl" src={book.photo ? book.photo : '../images/noCover.gif'} alt={book.title} />
               </a>
-              <div className="p-5 flex flex-col justify-center items-center">
-                <p className="short-author text-sm mb-3 font-normal text-gray-400">{book.author ? book.author : 'Unknown'}</p>
+              { book.status === 'reading' ? (
+                <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg bg-[#F7BE38] text-grey-900 text-center" role="alert">
+                  {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+                </div>
+              ) : null }
+              { book.status === 'want to read' ? (
+                <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg bg-[#e11d48] text-white text-center" role="alert">
+                  {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+                </div>
+              ) : null }
+              { book.status === 'have read' ? (
+                <div className="mx-auto w-max px-2 mt-4 text-sm font-bold rounded-lg border bg-black border-yellow-300 text-yellow-300 text-center" role="alert">
+                  {book.status.charAt(0).toUpperCase() + book.status.slice(1)}
+                </div>
+              ) : null }
+              <div className="p-4 flex flex-col justify-center items-center">
+                <p className="short-author text-sm mb-3 font-normal text-gray-400">{book.author ? book.author : 'Author unknown'}</p>
                 <div className="h-12 mb-3">
                   <a href={`/books/${book.id}`}>
                     <h5 className="text-center short-title text-lg font-bold tracking-tight text-white">{book.title}</h5>
                   </a>
                 </div>
-                <p className="mb-3 font-normal text-gray-400">{book.year}</p>
                 <div className="flex justify-between gap-4">
                   <a href={`/books/${book.id}`} className="py-2 px-3 text-sm font-bold text-center text-gray-900 rounded-lg focus:outline-none bg-[#F7BE38] hover:bg-[#F7BE38]/80 focus:ring-yellow-800">
                     More info
@@ -56,7 +70,21 @@ module.exports = function Books({ user, books }) {
               </div>
             </div>
           ))
-        ) : null}
+        )
+          : (
+            <div className="col-span-4 text-center">
+              <p className="mx-auto mt-5 text-3xl text-gray-400">
+                You do not have any books in your collection yet.
+              </p>
+              <p className="mx-auto mt-5 text-3xl text-gray-400">But you can add your own book by clicking the red button above or find one at the home page.</p>
+              <a
+                href="/"
+                className="mt-6 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-2 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+              >
+                Home page
+              </a>
+            </div>
+          )}
       </div>
     </Layout>
   );

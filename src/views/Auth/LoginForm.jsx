@@ -6,14 +6,16 @@ module.exports = function LoginForm({ error }) {
     <AuthLayout>
       <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
       <div className="flex min-h-full">
-        <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 border-r-4 border-[#F7BE38]">
+        <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 xl:flex-none lg:px-20 xl:px-24 xl:border-r-4 xl:border-[#F7BE38]">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <img
-                className="h-12 w-auto mx-auto"
-                src="/images/brain.png"
-                alt="Your Company"
-              />
+              <a href="/">
+                <img
+                  className="h-12 w-auto mx-auto"
+                  src="/images/brain.png"
+                  alt="Your Company"
+                />
+              </a>
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-white text-center">Sign in to your account</h2>
             </div>
             <div className="mt-8">
@@ -79,13 +81,8 @@ module.exports = function LoginForm({ error }) {
             </div>
           </div>
         </div>
-        <div className="relative hidden w-0 flex-1 pl-64 lg:flex items-center">
-          <lottie-player className="lottie" src="https://assets6.lottiefiles.com/packages/lf20_DMgKk1.json" style={{ width: 900, height: 900 }} background="transparent" speed="1" loop autoplay />
-          {/* <img
-            className="absolute inset-0 h-full w-full object-cover"
-            src="/images/loginRightSide.avif"
-            alt="Login Building"
-          /> */}
+        <div className="relative hidden w-0 flex-1 pl-64 xl:block items-center">
+          <lottie-player className="lottie" src="https://assets2.lottiefiles.com/packages/lf20_8LsVR1wgsM.json" style={{ width: 800, height: 800 }} background="transparent" speed="1" loop autoplay />
         </div>
       </div>
     </AuthLayout>

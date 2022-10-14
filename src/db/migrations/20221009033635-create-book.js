@@ -32,6 +32,9 @@ module.exports = {
       comment: {
         type: Sequelize.STRING,
       },
+      status: {
+        type: Sequelize.STRING,
+      },
       userID: {
         type: Sequelize.INTEGER,
         references: {

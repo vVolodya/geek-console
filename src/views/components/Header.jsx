@@ -7,7 +7,7 @@ module.exports = function Header({ user }) {
         <div className="flex w-full items-center justify-center lg:justify-between border-b border-white py-6 lg:border-none">
           <div className="flex items-center">
             <a href="/">
-              <img className="h-12 w-auto" src="/images/geekConsole3.png" alt="" />
+              <img className="h-12 w-auto" src="/images/geekConsole3.png" alt="Header logo" />
             </a>
           </div>
           <div className="ml-10 space-x-4 hidden lg:block">

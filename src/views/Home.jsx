@@ -5,7 +5,7 @@ module.exports = function Home({ user }) {
   return (
     <Layout user={user}>
       <script defer src="/script/getBooks.js" />
-      <div className="flex flex-col items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
+      <div className="mt-16 flex flex-col items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="text-center">
           <img className="h-40 w-auto mx-auto" src="images/giphy.gif" alt="GeekConsole Logo" />
           <h1 className="text-xl mb-3 text-yellow-400">Welcome to GeekConsole</h1>

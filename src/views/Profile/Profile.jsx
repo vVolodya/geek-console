@@ -7,7 +7,7 @@ module.exports = function Profile({
 }) {
   return (
     <Layout user={user}>
-      <div aria-live="polite" className="container mx-auto mt-10">
+      <div aria-live="polite" className="container mx-auto">
         <h1 className="text-center mb-16 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">Update your profile</h1>
         <form method="POST" action="/profile" className="form-widget mx-auto w-1/2">
           <div className="container mx-auto w-72 py-2">

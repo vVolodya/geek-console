@@ -5,6 +5,7 @@ const { catchErrors } = require('../middlewares/errorHandlers');
 const booksControllers = require('../controllers/booksControllers');
 const isAuth = require('../middlewares/isAuth');
 const isOwner = require('../middlewares/isOwner');
+const checkDuplicates = require('../middlewares/checkDuplicates');
 
 router.route('/')
   .get(booksControllers.renderBooksPage)
@@ -15,7 +16,7 @@ router.route('/new-form')
   .post(isAuth, catchErrors(booksControllers.addYourOwnBook));
 
 router.route('/new')
-  .post(isAuth, catchErrors(booksControllers.addBook));
+  .post(isAuth, catchErrors(checkDuplicates), catchErrors(booksControllers.addBook));
 
 router.route('/book-form/:id')
   .get(isAuth, catchErrors(isOwner), booksControllers.renderEditBookForm)
