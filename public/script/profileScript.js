@@ -77,7 +77,7 @@ const searchBooks = async (e) => {
 
   showSpinner();
 
-  const response = await fetch(`${URL}/profile/books/search/?searchQuery=${searchQuery}`);
+  const response = await fetch(`/profile/books/search/?searchQuery=${searchQuery}`);
   const books = await response.json();
 
   let booksHtml = '';

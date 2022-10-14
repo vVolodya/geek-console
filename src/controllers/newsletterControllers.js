@@ -8,10 +8,21 @@ exports.getEmail = async (req, res) => {
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
+    host: 'smtp.google.com',
+    port: 465,
+    secure: false,
     auth: {
       user: 'skinner.vova@gmail.com',
-      pass: `${GOOGLE_PASS}`,
+      pass: GOOGLE_PASS,
     },
+  });
+
+  transporter.verify((error, success) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Server is ready to take our messages');
+    }
   });
 
   const mailData = {
