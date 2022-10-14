@@ -1,4 +1,3 @@
-const URL = 'http://localhost:7777';
 const $booksContainer = document.querySelector('#books-container');
 
 const $spinnerButton = document.createElement('button');
@@ -17,11 +16,11 @@ const $duplicateBookError = document.createElement('div');
 $duplicateBookError.classList.add('w-max', 'mt-6', 'p-4', 'text-sm', 'font-bold', 'rounded-lg', 'bg-red-200', 'text-red-800');
 $duplicateBookError.textContent = 'You already have this book in your collection';
 
-const showEl = (el) => {
+const showBtnEl = (el) => {
   el.classList.remove('hidden');
 };
 
-const hideEl = (el) => {
+const hideBtnEl = (el) => {
   el.classList.add('hidden');
 };
 
@@ -33,7 +32,7 @@ const addToFavs = async (e) => {
       .parentElement;
 
     $buttonParentDiv.insertAdjacentElement('beforeend', $spinnerButton);
-    hideEl(e.target);
+    hideBtnEl(e.target);
 
     const bookID = e.target.dataset.gid;
 
@@ -52,17 +51,17 @@ const addToFavs = async (e) => {
       body: bookObj,
     };
 
-    const res = await fetch(`${URL}/books/new`, options);
+    const res = await fetch('/books/new', options);
 
     if (res.ok) {
       $spinnerButton.remove();
-      showEl(e.target);
+      showBtnEl(e.target);
       e.target.classList.add('cursor-not-allowed');
       e.target.setAttribute('disabled', 'disabled');
       e.target.textContent = 'Added to collection';
     } else {
       $spinnerButton.remove();
-      showEl(e.target);
+      showBtnEl(e.target);
       e.target.classList.add('cursor-not-allowed');
       e.target.setAttribute('disabled', 'disabled');
       e.target.textContent = 'Already in collection';

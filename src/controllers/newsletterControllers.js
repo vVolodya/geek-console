@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 const createError = require('http-errors');
 
+const { GOOGLE_PASS } = process.env;
+
 exports.getEmail = async (req, res) => {
   const { emailAddress } = req.body;
 
@@ -8,7 +10,7 @@ exports.getEmail = async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'skinner.vova@gmail.com',
-      pass: 'czevnletifzmoyqm',
+      pass: `${GOOGLE_PASS}`,
     },
   });
 

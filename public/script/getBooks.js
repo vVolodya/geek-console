@@ -1,5 +1,3 @@
-const URL = 'http://localhost:7777';
-
 const $searchBtn = document.querySelector('#search-btn');
 const $spinnerContainer = document.querySelector('#spinner-container');
 const $emptyInputError = document.querySelector('#empty-input-error');
@@ -50,10 +48,10 @@ const getBooks = async (e) => {
     body,
   };
 
-  const res = await fetch(`${URL}/books`, options);
+  const res = await fetch('/books', options);
 
   if (res.ok) {
-    window.location.replace(`${URL}/books`);
+    window.location.replace('/books');
   }
 };
 

@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/react-in-jsx-scope */
-const URL = 'http://localhost:7777';
 
 const $booksContainer = document.querySelector('#books-container');
 const $spinnerContainer = document.querySelector('#spinner-container');
@@ -49,11 +48,11 @@ const hideAlert = () => {
   $nothingFoundAlert.classList.add('hidden');
 };
 
-const showEl = (el) => {
+const showButtonEl = (el) => {
   el.classList.remove('hidden');
 };
 
-const hideEl = (el) => {
+const hideButtonEl = (el) => {
   el.classList.add('hidden');
 };
 
@@ -145,14 +144,14 @@ const deleteBook = async (e) => {
     const buttonDiv = e.target.parentElement;
     const bookID = e.target.dataset.id;
 
-    hideEl(e.target);
+    hideButtonEl(e.target);
     buttonDiv.insertAdjacentElement('beforeend', $spinnerButton);
 
     const options = {
       method: 'DELETE',
     };
 
-    const response = await fetch(`${URL}/books/${bookID}`, options);
+    const response = await fetch(`/books/${bookID}`, options);
 
     const bookCard = e.target.parentElement.parentElement.parentElement;
 
