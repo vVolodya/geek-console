@@ -20,6 +20,7 @@ module.exports = function Layout({ children, user }) {
         <link rel="icon" type="image/png" href="https://i.ibb.co/31W7B1y/Png-Item-1032462.png" />
         <link rel="stylesheet" href="/css/style.css" />
         <script defer src="/script/newsletter.js" />
+        <script src="https://f.convertkit.com/ckjs/ck.5.js" />
       </head>
 
       <body className="min-h-full flex flex-col justify-between bg-[#1c1c1c]">

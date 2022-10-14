@@ -28,7 +28,9 @@ const getUsersEmail = async (e) => {
     body: JSON.stringify({ emailAddress }),
   };
 
-  const response = await fetch('/newsletter', options);
+  const response = await fetch('https://app.convertkit.com/forms/3697247/subscriptions', options);
+
+  console.log(response);
 
   if (response.ok) {
     hideEl($emailSpinnerButon);
