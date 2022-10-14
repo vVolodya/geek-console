@@ -16,13 +16,13 @@ module.exports = function Footer() {
 
           <ul className="flex flex-wrap items-center mb-4 text-xl lg:mb-0 text-gray-400">
             <li>
-              <a href="/" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6 ">Home</a>
+              <a href="/" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6" target="_blank" rel="noopener noreferrer">Home</a>
             </li>
             <li>
-              <a href="https://roadmap.geekconsole.app" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6 ">Roadmap</a>
+              <a href="https://roadmap.geekconsole.app" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6" target="_blank" rel="noopener noreferrer">Roadmap</a>
             </li>
             <li>
-              <a href="https://github.com/vVolodya" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6">Github</a>
+              <a href="https://github.com/vVolodya" className="mr-4 hover:underline hover:text-white transition duration-300 md:mr-6" target="_blank" rel="noopener noreferrer">Github</a>
             </li>
           </ul>
 
