@@ -1,6 +1,8 @@
 # Geek Console
 Project-based application, which allowes users to find books and add them to their collection.
 
+https://geekconsole.app/
+
 ## Stack of used technologies:
 
 [![Stack](https://skillicons.dev/icons?i=js,nodejs,tailwind,postgres,express&perline=16)](https://skillicons.dev)
