@@ -8,7 +8,7 @@ https://geekconsole.app/
 [![Stack](https://skillicons.dev/icons?i=js,nodejs,tailwind,postgres,express&perline=16)](https://skillicons.dev)
 
 - Frontend: Tailwind
-- Backend: Node.js, Express, PostgreSQL, Sequelize ORM, Bcrypt, ConvertKit API, Google Books API
+- Backend: React SSR, Node.js, Express, PostgreSQL, Sequelize ORM, Bcrypt, ConvertKit API, Google Books API
 
 ## Main Page
 
